@@ -6,13 +6,38 @@
 
   background-image: url("../../assets/images/background/hero-big.png")
   background-repeat: no-repeat
-  background-position-x: right 10px
+  background-position-x: left 50vw
   background-position-y: 100px
 
-  @media screen and ( max-width: 900px )
+  @media screen and ( max-width: 940px )
     background-image: url("../../assets/images/background/hero-small.png")
 
 .container
   height: 800px
-  width: 900px
+  width: 940px
   margin: auto
+
+  @media screen and ( max-width: 940px )
+    width: 320px
+
+.header
+  margin: 189px 0 0 0
+
+  font-family: 'Libre Baskerville', serif
+  font-weight: 700
+  font-size: 64px
+  line-height: 74px
+
+  @media screen and ( max-width: 940px )
+    margin-top: 63px
+    font-size: 24px
+    line-height: 34px
+
+.text
+  margin: 32px 0 0 0
+
+  max-width: 42%
+
+  @media screen and ( max-width: 940px )
+    max-width: 60%
+
