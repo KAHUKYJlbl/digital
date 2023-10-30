@@ -2,8 +2,8 @@ import AbstractView from '../../abstract/view/view.ts';
 import { createButtonTemplate } from './button-template.ts';
 
 export default class ButtonView extends AbstractView {
-  #text;
-  #id;
+  #text: string;
+  #id: string;
 
   constructor (text: string, id: string) {
     super();

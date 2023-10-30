@@ -1,8 +1,11 @@
 import { render } from '../../abstract/render/render';
 import { addButton } from '../../utils/add-button';
+
 import HeroView from '../../view/hero/hero-view';
 import MainView from '../../view/main/main-view';
 import NavbarView from '../../view/navbar/navbar-view';
+import ServicesView from '../../view/services/services-view';
+
 import { MainControllerProps } from './types';
 
 const BUTTONS = {
@@ -17,6 +20,7 @@ export default class MainController {
   #navbarComponent = new NavbarView();
   #wrapComponent = new MainView();
   #heroComponent = new HeroView();
+  #servicesComponent = new ServicesView();
 
   constructor ({appContainer}: MainControllerProps) {
     this.#appContainer = appContainer;
@@ -41,6 +45,12 @@ export default class MainController {
     if (this.#wrapComponent.element && !this.#wrapComponent.element.contains(this.#heroComponent.element)) {
       render(this.#heroComponent, this.#wrapComponent.element);
     };
-    addButton(this.#heroComponent.element?.querySelector("#insert"), BUTTONS.unused1.name, BUTTONS.unused1.id);
+    addButton(this.#heroComponent.element?.querySelector('#insert-hero'), BUTTONS.unused1.name, BUTTONS.unused1.id);
+
+    // services
+    if (this.#wrapComponent.element && !this.#wrapComponent.element.contains(this.#servicesComponent.element)) {
+      render(this.#servicesComponent, this.#wrapComponent.element);
+    };
+    
   };
 }

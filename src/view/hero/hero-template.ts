@@ -12,7 +12,7 @@ export function createHeroTemplate() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus tristique vulputate ultrices ut mauris tellus at. Posuere sollicitudin odio tellus elit.
         </p>
 
-        <div id="insert" class="${style.insert}"></div>
+        <div id="insert-hero" class="${style.insert}"></div>
       </div>
     </div>
   `
