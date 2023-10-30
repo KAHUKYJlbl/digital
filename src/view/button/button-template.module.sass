@@ -1,0 +1,26 @@
+@use '../../assets/style/_variables' as *
+
+.button
+  height: 56px
+  width: 220px
+  border-radius: 10px
+
+  background-color: $primary
+  cursor: pointer
+
+  color: $text-secondary
+
+  @media screen and ( max-width: 940px )
+    width: 110px
+    height: 28px
+    border-radius: 5px
+
+.button:hover
+  opacity: 0.9
+
+.button:active
+  opacity: 1
+  box-shadow: inset 0 0 10px 0 #00000060
+
+  @media screen and ( max-width: 940px )
+    box-shadow: inset 0 0 5px 0 #00000060
