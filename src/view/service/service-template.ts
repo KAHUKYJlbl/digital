@@ -1,5 +1,6 @@
-import { ServiceType } from '../../model/types'
-import style from './service-template.module.sass'
+import { ServiceType } from '../../model/types';
+import style from './service-template.module.sass';
+import arrowNext from '../../assets/images/icons/arrow-next.svg';
 
 export function createServiceTemplate(props: ServiceType) {
   return `
@@ -13,6 +14,11 @@ export function createServiceTemplate(props: ServiceType) {
       <p class="${style.text}">
         ${props.description}
       </p>
+
+      <button class="${style.button}" type="button">
+        Learn more
+        <img src="${arrowNext}" height="24px" width="24px" />
+      </button>
     </div>
   `
 }
