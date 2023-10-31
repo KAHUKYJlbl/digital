@@ -39,7 +39,12 @@
         grid-template-areas: "header button" "text button"
 
         padding-top: 90px
-        padding-bottom: 64px
+        padding-bottom: 90px
+
+        @media screen and ( max-width: 940px )
+          grid-template-areas: "header" "text" "button"
+          padding-top: 64px
+          padding-bottom: 64px
 
         .header
           display: flex
@@ -52,7 +57,7 @@
           line-height: 46px
 
           @media screen and ( max-width: 940px )
-            width: 80px
+            width: max-content
             font-size: 12px
             line-height: 22px
 
@@ -69,17 +74,31 @@
           justify-content: center
           align-items: center
 
+          @media screen and ( max-width: 940px )
+            justify-content: start
+
       .container-bottom
         display: grid
         grid-template-columns: 1fr 1fr 1fr
 
         padding-top: 90px
-        padding-bottom: 90px
+        padding-bottom: 64px
+
+        @media screen and ( max-width: 940px )
+          display: flex
+          flex-direction: column
+          padding-top: 64px
+          padding-bottom: 24px
 
         .footer-contacts
           display: flex
           flex-direction: column
           gap: 24px
+
+          margin-bottom: 16px
+
+          @media screen and ( max-width: 940px )
+            gap: 12px
 
           .contacts-header
             display: flex
@@ -101,6 +120,11 @@
           flex-direction: column
           gap: 16px
 
+          margin-bottom: 16px
+
+          @media screen and ( max-width: 940px )
+            gap: 8px
+
           .footerHeader
             font-size: 20px
             font-weight: 600
@@ -111,8 +135,12 @@
           .footer-item
             cursor: pointer
 
+      .copyright
+        opacity: 0.4
+        padding-bottom: 64px
+
 .background-add:before
-  content: "Read this: "
+  content: ""
   display: block
   position: absolute
   top: 390px
@@ -123,3 +151,7 @@
   width: 100%
 
   background-color: white
+
+  @media screen and ( max-width: 940px )
+    top: 400px
+    transform: translateX(260px)

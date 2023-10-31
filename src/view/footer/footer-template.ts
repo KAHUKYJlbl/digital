@@ -102,6 +102,10 @@ export function createFooterTemplate() {
               </div>
             </div>
           </div>
+            
+          <div class="${style.copyright}">
+            2019 © Afrianska. All rights reserved.
+          </div>
         </div>
       </div>
     </div>
