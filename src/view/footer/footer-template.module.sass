@@ -1,0 +1,125 @@
+@use '../../assets/style/_variables.sass' as *
+
+.background
+  position: relative
+  transform: translateX(-50%)
+  left: 50%
+
+  width: 100vw
+
+  background-color: $primary
+
+  .background-add
+    position: relative
+    width: 100vw
+    left: -100px
+
+    background-color: $secondary
+    border-radius: 0 200px 0 0
+
+    @media screen and ( max-width: 940px )
+      border-radius: 0 100px 0 0
+
+    .container
+      position: relative
+      left: 100px
+      width: 940px
+      margin: auto
+
+      color: $text-secondary
+
+      @media screen and ( max-width: 940px )
+        width: 320px
+
+      .container-top
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-template-rows: 90px 90px
+        row-gap: 32px
+        grid-template-areas: "header button" "text button"
+
+        padding-top: 90px
+        padding-bottom: 64px
+
+        .header
+          display: flex
+          grid-area: header
+
+          align-items: center
+
+          font-size: 36px
+          font-weight: 600
+          line-height: 46px
+
+          @media screen and ( max-width: 940px )
+            width: 80px
+            font-size: 12px
+            line-height: 22px
+
+        .text
+          display: flex
+          grid-area: text
+
+          align-items: center
+
+        .insert
+          display: flex
+          grid-area: button
+
+          justify-content: center
+          align-items: center
+
+      .container-bottom
+        display: grid
+        grid-template-columns: 1fr 1fr 1fr
+
+        padding-top: 90px
+        padding-bottom: 90px
+
+        .footer-contacts
+          display: flex
+          flex-direction: column
+          gap: 24px
+
+          .contacts-header
+            display: flex
+            gap: 15px
+            align-items: center
+
+            h3
+              font-size: 28px
+              font-weight: 600
+              line-height: 46px
+
+          .contacts
+            display: flex
+            gap: 15px
+            cursor: pointer
+
+        .footer-menu
+          display: flex
+          flex-direction: column
+          gap: 16px
+
+          .footerHeader
+            font-size: 20px
+            font-weight: 600
+            line-height: 30px
+
+            margin-bottom: 8px
+
+          .footer-item
+            cursor: pointer
+
+.background-add:before
+  content: "Read this: "
+  display: block
+  position: absolute
+  top: 390px
+  right: 50%
+  transform: translateX(450px)
+
+  height: 1px
+  width: 100%
+
+  background-color: white

@@ -19,6 +19,10 @@ const BUTTONS = {
     name: "See Our Project",
     id: "unused1"
   },
+  unused2: {
+    name: "Let's Talk",
+    id: "unused2"
+  },
 }
 
 export default class MainController {
@@ -74,8 +78,9 @@ export default class MainController {
     };
 
     // footer
-    if (this.#wrapComponent.element && !this.#wrapComponent.element.contains(this.#clientsComponent.element)) {
-      render(this.#clientsComponent, this.#wrapComponent.element);
+    if (this.#wrapComponent.element && !this.#wrapComponent.element.contains(this.#footerComponent.element)) {
+      render(this.#footerComponent, this.#wrapComponent.element);
     };
+    addButton(this.#footerComponent.element?.querySelector('#insert-footer'), BUTTONS.unused2.name, BUTTONS.unused2.id);
   };
 }
