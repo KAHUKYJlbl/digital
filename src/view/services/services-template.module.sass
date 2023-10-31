@@ -1,21 +1,26 @@
 @use '../../assets/style/_variables' as *
   
-.insert
+.container
   display: flex
   flex-direction: column
-  gap: 20px
+  flex-wrap: wrap
+  column-gap: 20px
+  row-gap: 100px
 
+  height: 1250px
   margin-top: 192px
+  margin-bottom: 20px
 
   @media screen and ( max-width: 940px )
     margin-top: 96px
+    margin-bottom: 10px
 
 .header
-  min-height: 200px
+  height: 260px
   width: 460px
   margin: 0
 
-  font-weight: 60
+  font-weight: 600
   font-size: 36px
   line-height: 46px
 

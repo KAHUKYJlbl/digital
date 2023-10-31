@@ -1,5 +1,8 @@
 import { render } from '../../abstract/render/render';
 import { addButton } from '../../utils/add-button';
+import { addService } from '../../utils/add-service';
+
+import ServicesModel from '../../model/services-model';
 
 import HeroView from '../../view/hero/hero-view';
 import MainView from '../../view/main/main-view';
@@ -7,6 +10,7 @@ import NavbarView from '../../view/navbar/navbar-view';
 import ServicesView from '../../view/services/services-view';
 
 import { MainControllerProps } from './types';
+import { getHeight } from '../../utils/get-height';
 
 const BUTTONS = {
   unused1: {
@@ -17,13 +21,16 @@ const BUTTONS = {
 
 export default class MainController {
   #appContainer: Element;
+  #servicesModel: ServicesModel;
   #navbarComponent = new NavbarView();
   #wrapComponent = new MainView();
   #heroComponent = new HeroView();
-  #servicesComponent = new ServicesView();
+  #servicesComponent: ServicesView;
 
-  constructor ({appContainer}: MainControllerProps) {
+  constructor ({servicesModel, appContainer}: MainControllerProps) {
+    this.#servicesModel = servicesModel;
     this.#appContainer = appContainer;
+    this.#servicesComponent = new ServicesView(getHeight(this.#servicesModel.data?.length));
   };
 
   init () {
@@ -51,6 +58,10 @@ export default class MainController {
     if (this.#wrapComponent.element && !this.#wrapComponent.element.contains(this.#servicesComponent.element)) {
       render(this.#servicesComponent, this.#wrapComponent.element);
     };
-    
+    if (this.#servicesModel.data) {
+      this.#servicesModel.data.map((service) => {
+        addService(this.#servicesComponent.element, service);
+      });
+    }
   };
 }
