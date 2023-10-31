@@ -5,7 +5,7 @@ export function createServicesTemplate(height: number) {
     <div class="${style.container}" style="height: ${height}px;">
       <h2 class="${style.header}">
         What we do to help<br>our client grow in<br>digital era
-      </h1>
+      </h2>
     </div>
   `
 }

@@ -11,6 +11,8 @@ import ServicesView from '../../view/services/services-view';
 
 import { MainControllerProps } from './types';
 import { getHeight } from '../../utils/get-height';
+import ClientsView from '../../view/clients/clients-view';
+import FooterView from '../../view/footer/footer-view';
 
 const BUTTONS = {
   unused1: {
@@ -25,6 +27,8 @@ export default class MainController {
   #navbarComponent = new NavbarView();
   #wrapComponent = new MainView();
   #heroComponent = new HeroView();
+  #clientsComponent = new ClientsView();
+  #footerComponent = new FooterView();
   #servicesComponent: ServicesView;
 
   constructor ({servicesModel, appContainer}: MainControllerProps) {
@@ -63,5 +67,15 @@ export default class MainController {
         addService(this.#servicesComponent.element, service);
       });
     }
+
+    // clients
+    if (this.#wrapComponent.element && !this.#wrapComponent.element.contains(this.#clientsComponent.element)) {
+      render(this.#clientsComponent, this.#wrapComponent.element);
+    };
+
+    // footer
+    if (this.#wrapComponent.element && !this.#wrapComponent.element.contains(this.#clientsComponent.element)) {
+      render(this.#clientsComponent, this.#wrapComponent.element);
+    };
   };
 }

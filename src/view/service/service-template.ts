@@ -9,7 +9,7 @@ export function createServiceTemplate(props: ServiceType) {
 
       <h3 class="${style.header}">
         ${props.name}
-      </h1>
+      </h3>
 
       <p class="${style.text}">
         ${props.description}
