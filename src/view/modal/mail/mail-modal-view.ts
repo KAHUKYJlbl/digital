@@ -1,8 +1,8 @@
 import he from 'he';
-import AbstractStatefulView from '../../../abstract/view/state-view.ts';
 import ButtonView from '../../button/button-view.ts';
 import { createMailModalTemplate } from './mail-modal-template.ts';
 import { MessageType } from '../../../model/types.ts';
+import AbstractView from '../../../abstract/view/view.ts';
 
 const INIT_STATE: MessageType = {
   name: "",
@@ -10,9 +10,10 @@ const INIT_STATE: MessageType = {
   message: "",
 }
 
-export default class MailModalView extends AbstractStatefulView<MessageType> {
+export default class MailModalView extends AbstractView {
   #buttonId = "modal-submit";
   #callback: (data: MessageType) => void;
+  _state: MessageType;
 
   constructor ( callback: (data: MessageType) => void ) {
     super();
@@ -20,17 +21,21 @@ export default class MailModalView extends AbstractStatefulView<MessageType> {
     this._setState(INIT_STATE);
     this.#callback = callback;
 
-    this._restoreHandlers();
+    this._addHandlers();
   }
 
-  _restoreHandlers = () => {
-    this.element?.querySelector(`#${this.#buttonId}`)?.addEventListener("click", () => this.#callback(this._state));
+  _setState (data: MessageType) {
+    this._state = data;
+  }
+
+  _addHandlers = () => {
+    this.element?.querySelector(`#${this.#buttonId}`)?.addEventListener('click', () => this.#callback(this._state));
 
     // input fields
-    this.element?.querySelector("#name")?.addEventListener("input", this.#inputNameHandler);
-    this.element?.querySelector("#email")?.addEventListener("input", this.#inputEmailHandler);
-    this.element?.querySelector("#message")?.addEventListener("input", this.#inputMessageHandler);
-  }
+    this.element?.querySelector('#name')?.addEventListener('input', this.#inputNameHandler);
+    this.element?.querySelector('#email')?.addEventListener('input', this.#inputEmailHandler);
+    this.element?.querySelector('#message')?.addEventListener('input', this.#inputMessageHandler);
+  };
 
   #inputNameHandler = (e: Event) => {
     e.preventDefault();
