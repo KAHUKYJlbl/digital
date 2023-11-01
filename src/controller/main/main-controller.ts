@@ -12,7 +12,6 @@ import ServicesView from '../../view/services/services-view';
 import { getHeight } from '../../utils/get-height';
 import ClientsView from '../../view/clients/clients-view';
 import FooterView from '../../view/footer/footer-view';
-import MailModalView from '../../view/modal/mail/mail-modal-view';
 
 import { MainControllerProps } from './types';
 
