@@ -31,7 +31,7 @@ export default class ModalController {
     };
   }
 
-  #removeModal = (e: Event) => {
+  #removeModal = () => {
     if (this.#modalComponent) {
       remove(this.#modalComponent);
       this.#modalComponent = null
