@@ -5,7 +5,7 @@ export default class ButtonView extends AbstractView {
   #text: string;
   #id: string;
 
-  constructor (text: string, id: string) {
+  constructor (text: string, id: string ) {
     super();
 
     this.#text = text;

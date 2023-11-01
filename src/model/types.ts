@@ -3,3 +3,9 @@ export type ServiceType = {
   name: string,
   description: string,
 }
+
+export type MessageType = {
+  name: string;
+  email: string;
+  message: string;
+}

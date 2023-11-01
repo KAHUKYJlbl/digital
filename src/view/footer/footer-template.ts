@@ -1,7 +1,7 @@
 import logo from '../../assets/images/icons/logo-light.svg'
 import style from './footer-template.module.sass'
 
-export function createFooterTemplate() {
+export function createFooterTemplate(template: string) {
   return `
     <div class="${style.background}">
       <div class="${style.backgroundAdd}">
@@ -15,8 +15,8 @@ export function createFooterTemplate() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus tristique vulputate ultrices ut mauris tellus at. Posuere sollicitudin odio tellus elit.
             </p>
 
-            <div class="${style.insert}" id="insert-footer">
-            
+            <div class="${style.insert}">
+              ${template}
             </div>
           </div>
 

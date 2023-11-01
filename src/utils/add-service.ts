@@ -7,7 +7,5 @@ export function addService (container: Element | null | undefined, props: Servic
 
   if (container && !container.contains(service.element)) {
     render(service, container);
-  } else {
-    console.log(container);
   }
 };
