@@ -1,0 +1,48 @@
+@use '../../../assets/style/_variables.sass' as *
+
+.container
+  position: sticky
+  z-index: 5
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+
+  width: 320px
+  height: 600px
+  border-radius: 10px
+  padding: 32px 16px
+
+  background-color: white
+
+  .header
+    font-size: 20px
+    line-height: 30px
+    font-weight: 600
+
+  .form
+    display: flex
+    flex-direction: column
+    gap: 8px
+
+    margin-top: 32px
+
+    .input
+      line-height: 36px
+      margin-top: 8px
+      margin-bottom: 24px
+      padding: 10px 20px
+
+      border: 1px solid #5A98D040
+      border-radius: 10px
+      outline: none
+
+    .textarea
+      line-height: 36px
+      margin-top: 8px
+      margin-bottom: 24px
+      padding: 10px 20px
+      resize: none
+
+      border: 1px solid #5A98D040
+      border-radius: 10px
+      outline: none

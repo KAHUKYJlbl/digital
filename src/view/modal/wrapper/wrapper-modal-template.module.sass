@@ -1,0 +1,32 @@
+.container
+  position: absolute
+  z-index: 4
+  left: 0
+  top: 0
+
+  height: 100%
+  width: 100vw
+
+  background-color: #3a5f9299
+  animation: behold 0.3s
+
+  .button
+    position: sticky
+    z-index: 5
+    left: 30px
+    top: 25px
+    border-radius: 4px
+
+  .button:hover
+    opacity: 0.6
+
+  .button:active
+    opacity: 1
+    box-shadow: 0 0 20px 0 #00000060, inset 0 0 10px 0 #00000050
+
+@keyframes behold
+  0%
+    opacity: 0
+
+  100%
+    opacity: 1

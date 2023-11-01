@@ -1,0 +1,47 @@
+@use '../../assets/style/_variables' as *
+
+.container
+  height: 450px
+  width: 284px
+  margin-left: 80px
+  padding: 48px
+
+  box-shadow: 5px 20px 50px 0 #1070B120
+  border-radius: 10px
+
+  @media screen and ( max-width: 940px )
+    height: 360px
+    margin-left: 0
+    padding: 18px
+
+.image
+  display: block
+  margin: auto
+
+.header
+  font-weight: 600
+  font-size: 20px
+  line-height: 30px
+
+  @media screen and ( max-width: 940px )
+    font-size: 10px
+    line-height: 20px
+
+.text
+  margin-top: 16px
+
+.button
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  height: 30px
+  width: 130px
+  margin-top: 32px
+
+  font-size: 14px
+  line-height: 30px
+  color: $primary
+
+.button:hover
+  opacity: 0.9
