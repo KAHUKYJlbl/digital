@@ -11,8 +11,8 @@ export default class MessageModel {
     try {
       const response = await this.#messageApi.sendMessage(message);
 
-      // this._notify(updateType, updatedFilm);
       this.#messages.push(response);
+      console.log(this.#messages);
     } catch(err) {
       throw new Error('Can\'t update film');
     }
