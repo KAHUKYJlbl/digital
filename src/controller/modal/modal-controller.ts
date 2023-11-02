@@ -20,12 +20,23 @@ export default class ModalController {
   init (innerComponent: MailModalView | SuccessModalView = new MailModalView(this.#onFormSubmit)) {
     this.#modalComponent = new WrapperModalView(this.#removeModal);
     this.#innerComponent = innerComponent;
-    this.#messageModel = new MessageModel();
+
+    if ( !this.#messageModel ) {
+      this.#messageModel = new MessageModel();
+    }
+
     this.#renderModal();
   }
 
   #onFormSubmit = (data: MessageType) => {
     this.#messageModel.sendMessage(data)
+      .then((response) => {
+        if (response) {
+          this.#removeModal();
+          this.init(new SuccessModalView());
+        }
+    });
+
   }
 
   #renderModal = () => {

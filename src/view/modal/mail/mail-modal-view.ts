@@ -15,7 +15,7 @@ export default class MailModalView extends AbstractView {
   #buttonId = "modal-submit";
   #callback: (data: MessageType) => void;
   _state: MessageType;
-  _error = false;
+  _error = true;
 
   constructor ( callback: (data: MessageType) => void ) {
     super();
@@ -40,6 +40,27 @@ export default class MailModalView extends AbstractView {
   };
 
   #formSubmitHandler = () => {
+    if ( !validation('name', this._state.name) ) {
+      document.querySelector('#name')?.classList.add('error');
+      this._setError(true);
+
+      return;
+    }
+
+    if ( !validation('email', this._state.email) ) {
+      document.querySelector('#email')?.classList.add('error');
+      this._setError(true);
+
+      return;
+    }
+
+    if ( !validation('message', this._state.message) ) {
+      document.querySelector('#message')?.classList.add('error');
+      this._setError(true);
+
+      return;
+    }
+
     if ( !this._error ) {
       this.#callback(this._state);
     }
@@ -50,8 +71,6 @@ export default class MailModalView extends AbstractView {
     const value = (e.target as HTMLInputElement).value;
 
     if ( !validation('name', value) ) {
-      document.querySelector('#name')?.classList.add('error');
-      this._setError(true);
       return;
     }
 
@@ -60,7 +79,7 @@ export default class MailModalView extends AbstractView {
 
     this._setState({
       ...this._state,
-      email: he.encode(value),
+      name: he.encode(value),
     });
   };
 
@@ -68,9 +87,8 @@ export default class MailModalView extends AbstractView {
     e.preventDefault();
     const value = (e.target as HTMLInputElement).value;
 
-    if ( validation('email', value) ) {
-      document.querySelector('#email')?.classList.add('error');
-      this._setError(true);
+    if ( !validation('email', value) ) {
+      return;
     }
 
     document.querySelector('#email')?.classList.remove('error');
@@ -86,9 +104,8 @@ export default class MailModalView extends AbstractView {
     e.preventDefault();
     const value = (e.target as HTMLInputElement).value;
 
-    if ( validation('message', value) ) {
-      document.querySelector('#message')?.classList.add('error');
-      this._setError(true);
+    if ( !validation('message', value) ) {
+      return;
     }
 
     document.querySelector('#message')?.classList.remove('error');
@@ -96,12 +113,12 @@ export default class MailModalView extends AbstractView {
 
     this._setState({
       ...this._state,
-      email: he.encode(value),
+      message: he.encode(value),
     });
   };
 
   get template() {
-    return createMailModalTemplate( (new ButtonView(`Let's Talk`, this.#buttonId)).template );
+    return createMailModalTemplate( (new ButtonView(`SUBMIT`, this.#buttonId)).template );
   };
 
   _setError (error: boolean) {
