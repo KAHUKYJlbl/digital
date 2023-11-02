@@ -1,4 +1,5 @@
 import { remove, render } from '../../abstract/render/render';
+import MessageModel from '../../model/message-model';
 import { MessageType } from '../../model/types';
 
 import MailModalView from '../../view/modal/mail/mail-modal-view';
@@ -7,27 +8,30 @@ import WrapperModalView from '../../view/modal/wrapper/wrapper-modal-view';
 
 export default class ModalController {
   #appContainer: Element;
+  #messageModel: MessageModel;
   #modalComponent: WrapperModalView | null = null;
-  #innerComponent: MailModalView | SuccessModalView | null = null;
+  #innerComponent: MailModalView | SuccessModalView | null;
 
   constructor (appContainer: Element) {
     this.#appContainer = appContainer;
+    this.#innerComponent = new MailModalView(this.#onFormSubmit);
   }
 
   init (innerComponent: MailModalView | SuccessModalView = new MailModalView(this.#onFormSubmit)) {
+    this.#modalComponent = new WrapperModalView(this.#removeModal);
     this.#innerComponent = innerComponent;
-    this.#modalComponent = new WrapperModalView(this.#innerComponent.template, this.#removeModal);
+    this.#messageModel = new MessageModel();
     this.#renderModal();
   }
 
   #onFormSubmit = (data: MessageType) => {
-
-    console.log(data);
+    this.#messageModel.sendMessage(data)
   }
 
   #renderModal = () => {
-    if (this.#appContainer && this.#modalComponent && !this.#appContainer.contains(this.#modalComponent.element)) {
+    if (this.#appContainer && this.#modalComponent && this.#innerComponent && !this.#appContainer.contains(this.#modalComponent.element)) {
       render(this.#modalComponent, this.#appContainer);
+      render(this.#innerComponent, document.querySelector("#modal-wrapper") as Element)
     };
   }
 

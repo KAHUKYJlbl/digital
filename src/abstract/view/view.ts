@@ -23,6 +23,10 @@ export default class AbstractView {
     throw new Error('Abstract method not implemented: get template');
   }
 
+  _addHandlers() {
+    throw new Error('Abstract method not implemented: _addHandlers');
+  }
+
   removeElement() {
     this.#element = null;
   }
