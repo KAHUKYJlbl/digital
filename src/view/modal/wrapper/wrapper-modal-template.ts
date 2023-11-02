@@ -1,10 +1,9 @@
 import style from './wrapper-modal-template.module.sass'
 
-export function createWrapperModalTemplate( innerTemplate: string, id: string ) {
+export function createWrapperModalTemplate( id: string ) {
   return `
-    <div class="${style.container}">
+    <div class="${style.container}" id="modal-wrapper">
       <button id="${id}" class="${style.button}">CLOSE</button>
-      ${innerTemplate}
     </div>
   `
 }

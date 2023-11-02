@@ -22,11 +22,11 @@ export default class MailModalView extends AbstractView {
     this.#callback = callback;
 
     this._addHandlers();
-  }
+  };
 
   _setState (data: MessageType) {
     this._state = data;
-  }
+  };
 
   _addHandlers = () => {
     this.element?.querySelector(`#${this.#buttonId}`)?.addEventListener('click', () => this.#callback(this._state));
@@ -66,5 +66,5 @@ export default class MailModalView extends AbstractView {
 
   get template() {
     return createMailModalTemplate( (new ButtonView(`Let's Talk`, this.#buttonId)).template );
-  }
+  };
 }

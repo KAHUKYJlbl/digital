@@ -14,7 +14,7 @@ export default class MessageModel {
       this.#messages.push(response);
       console.log(this.#messages);
     } catch(err) {
-      throw new Error('Can\'t update film');
+      throw new Error('Can\'t send message');
     }
 
   }
