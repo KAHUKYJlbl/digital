@@ -12,7 +12,8 @@ export default class MessageModel {
       const response = await this.#messageApi.sendMessage(message);
 
       this.#messages.push(response);
-      console.log(this.#messages);
+
+      return true;
     } catch(err) {
       throw new Error('Can\'t send message');
     }
